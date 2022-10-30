@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 
-const ContainerList = styled.div`
-border: 1px dashed tomato;
-`
-const List = styled.ul`
-border: 1px solid red;
+const List = styled.ol`
+font-size: 18px;
+text-align: start;
 `;
 
 const ListItem = styled.li`
-border:1px solid green
+padding: 2px 5px;
+max-width: 50%;
+margin-bottom: 5px;
+&:last-child {
+    margin-bottom: 0;
+}
 `;
 
-const ListTitle = styled.h2`
-border:1px solid orange
-`;
-
-export {ContainerList, List, ListItem, ListTitle};
+export { List, ListItem};

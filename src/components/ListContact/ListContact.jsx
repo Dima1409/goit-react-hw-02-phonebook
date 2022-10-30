@@ -1,17 +1,14 @@
 import React from 'react';
-import { ContainerList, List, ListItem, ListTitle } from './ListContact.styled';
+import { List, ListItem } from './ListContact.styled';
 import PropTypes from 'prop-types';
 
 const ListContact = ({contacts}) => {
     return (
-        <ContainerList>
-            <ListTitle>Contacts</ListTitle>
             <List>
-                {contacts.map(({id, name})=>{
-                    return <ListItem key={id}>{name}</ListItem>
+                {contacts.map(({id, name, number})=>{
+                    return <ListItem key={id}><p>{name}: {number}</p></ListItem>
                 })}
             </List>
-        </ContainerList>
     )
 }
 
@@ -20,7 +17,9 @@ export default ListContact;
 
 ListContact.propTypes = {
     contacts: PropTypes.PropTypes.arrayOf(
-         PropTypes.exact({
+         PropTypes.shape({
             name: PropTypes.string.isRequired,
-            id: PropTypes.string.isRequired,}))
+            id: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired
+        }))
 }

@@ -1,0 +1,19 @@
+import styled from 'styled-components';
+
+const ContainerList = styled.div`
+text-align: center;
+max-width: 680px;
+margin: 0 auto;
+padding: 10px 0;
+`;
+const FormTitle = styled.h2`
+font-size: 28px;
+text-align: center;
+margin-bottom: 20px;
+`;
+const ListTitle = styled.h2`
+margin-bottom: 10px;
+font-size: 28px;
+`;
+
+export {ContainerList, ListTitle, FormTitle};
