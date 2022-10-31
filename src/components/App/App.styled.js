@@ -6,7 +6,7 @@ max-width: 680px;
 margin: 0 auto;
 padding: 10px 0;
 `;
-const FormTitle = styled.h2`
+const FormTitle = styled.h1`
 font-size: 28px;
 text-align: center;
 margin-bottom: 20px;

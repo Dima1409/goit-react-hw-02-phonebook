@@ -24,18 +24,20 @@ export class App extends Component {
     const normalizedValue = this.state.filter.toLowerCase();
     return this.state.contacts.filter(elem=>elem.name.toLowerCase().includes(normalizedValue))
   }
-
+  onDeleteItem= id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(elem => elem.id !== id),
+    }));
+  } 
+  
   SubmitForm = data => {
     const {contacts} = this.state;
-    contacts.forEach(elem => {
-      if(elem.name.toLowerCase()===data.name.toLowerCase()) {
-        alert(`${data.name} is already in contacts`)
-        const newListContact = [...contacts];
-        return this.setState({contacts: newListContact})
-      }
-      const newListContact = [...contacts, data];
-      return this.setState({contacts: newListContact})
-    })
+    if(contacts.some((elem)=> elem.name.toLowerCase()===data.name.toLowerCase())) {
+      return alert(`${data.name} is already in contacts`);
+    }
+    const newListContact = [...contacts, data];
+    return this.setState({contacts: newListContact}) 
+    
   }
   
   render() {
@@ -44,12 +46,12 @@ export class App extends Component {
     const onChange = this.onChangeFilter;
     return (
       <>
-      <FormTitle as='h1'>Phonebook</FormTitle>
+      <FormTitle>Phonebook</FormTitle>
       <ContactsForm onSubmit={this.SubmitForm}></ContactsForm>
       <ContainerList>
-      <ListTitle as='h2'>Contacts</ListTitle>
+      <ListTitle>Contacts</ListTitle>
       <SearchInput value={filter} onChangeFilter={onChange}></SearchInput>
-      <ListContact contacts={sortByName}></ListContact>
+      <ListContact contacts={sortByName} onDeleteItem={this.onDeleteItem}></ListContact>
       </ContainerList>
       </>
     )
