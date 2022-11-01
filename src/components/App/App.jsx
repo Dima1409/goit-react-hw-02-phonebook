@@ -32,7 +32,8 @@ export class App extends Component {
   
   SubmitForm = data => {
     const {contacts} = this.state;
-    if(contacts.some((elem)=> elem.name.toLowerCase()===data.name.toLowerCase())) {
+    const someCopyItem = contacts.some((elem)=> elem.name.toLowerCase()===data.name.toLowerCase());
+    if(someCopyItem) {
       return alert(`${data.name} is already in contacts`);
     }
     const newListContact = [...contacts, data];
